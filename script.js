@@ -1,32 +1,23 @@
-//your JS code here. If required.
 function secondHighest(arr) {
     if (arr.length < 2) {
         return -Infinity;
     }
 
-    let firstHighest = -Infinity;
-    let secondHighest = -Infinity;
+    let firstMax = -Infinity;
+    let secondMax = -Infinity;
 
-    for (let num of arr) {
-        if (num > firstHighest) {
-            secondHighest = firstHighest;
-            firstHighest = num;
-        } else if (num > secondHighest && num < firstHighest) {
-            secondHighest = num;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > firstMax) {
+            secondMax = firstMax;
+            firstMax = arr[i];
+        } else if (arr[i] > secondMax && arr[i] !== firstMax) {
+            secondMax = arr[i];
         }
     }
-
-    if (secondHighest === -Infinity) {
+    if (secondMax === -Infinity) {
         return -Infinity;
     }
 
-    return secondHighest;
+    return secondMax;
 }
 
-
-// Test cases
-console.log(secondHighest([5, 1, 2, 3, 4]));  // Output: 4
-console.log(secondHighest([-1, -2, -3, -4, -5]));  // Output: -2
-console.log(secondHighest([]));  // Output: -Infinity
-console.log(secondHighest([1]));  // Output: -Infinity
-console.log(secondHighest([1, 1, 1, 1, 1]));  // Output: -Infinity
